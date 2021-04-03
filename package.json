@@ -1,0 +1,9 @@
+{
+  "name": "osStatus",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "os-utils": "^0.0.14"
+  }
+}
