@@ -5,9 +5,8 @@ function mySystemStatus() {
     setInterval(() => {
 
         console.clear()
-        console.log("====== PC STATUS ====== ")
+        console.log("====== PC STATUS ====== \n")
         
-
         const system = os.type();
         const architecture = os.arch();
 
@@ -32,11 +31,15 @@ function mySystemStatus() {
             percents:`${percents}%`
         }
 
-        console.table(stats)
+        if(percents <= 50) {
+                console.table(stats),
+                console.log('\nSistema OK!')
+        } else {
+                console.table(stats),
+                console.log(`\nSistema usando ${stats.percents}%, da memória ram disponível, tente fechar algumas aplicações para seu uso ficar abaixo de 50%`)
+        }
 
-        const time = parseInt(os.uptime() / 3600)
-        console.table(`\nActivity time: ${time} minutes.`)
-
+        console.log('\n\nBy: Lucas Newlands          Version: 0.1.0')
     }, 1000)
 }
 
