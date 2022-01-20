@@ -1,11 +1,22 @@
 const os = require('os');
 
 function mySystemStatus() {
+
     setInterval(() => {
 
         console.clear()
         console.log("====== PC STATUS ====== \n")
+    
+        const arch = os.arch();
+        const platform = os.platform();
+        const release = os.release();
 
+        const types = {
+            operation_system: `${platform}`,
+            architecture: `${arch}`
+        }
+
+        console.table(types)
     
         const { freemem, totalmem } = os;
     
@@ -23,9 +34,10 @@ function mySystemStatus() {
         if(percentage_usage <= 50) {
             console.table(stats),
             console.log('\nSistema OK!')
+            console.log(`\nSistema usando ${stats.percentage_usage},\ ${percentage_free}% da memória livre.`)
         } else {
                 console.table(stats),
-                console.log(`\nSistema usando ${stats.percentage_usage},\nsomente ${percentage_free}% do sistema livre.`)
+                console.log(`\nSistema usando ${stats.percentage_usage},\nsomente ${percentage_free}% da memória livre.`)
         }
     
         console.log('\n\nBy: Lucas Newlands')
